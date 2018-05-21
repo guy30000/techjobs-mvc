@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:tr="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments :: head">
 </head>
 <body>
@@ -11,6 +11,19 @@
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <!-- TODO #3 - Use the same list display from search.html -->
+
+    <!-- my code. This code is doind al lthe list functionality-->
+    <table class="job-listing" th:each="jobV : ${jobs}">
+        <tr th:each="entry : ${jobV}">
+            <td th:text="${entry.key}"></td>
+            <td th:text="${entry.value}"></td>
+        </tr>
+
+    </table>
+    <<!-- end my code -->
+
+
+
 
 </div>
 

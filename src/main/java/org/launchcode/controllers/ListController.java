@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -40,13 +41,18 @@ public class ListController {
         if (column.equals("all")) {
             ArrayList<HashMap<String, String>> jobs = JobData.findAll();
             model.addAttribute("title", "All Jobs");
-            model.addAttribute("jobs", jobs);
-            return "list-jobs";
+            model.addAttribute("jobs", jobs);  //this looks like what needs to be passed to list
+            //System.out.println(columnChoices + "columthingsVVVVVVVVVVVVVVVVV"); //test line
+            //printJobs(JobData.findAll()); //test line. prints all like it did befor
+
+
+            return ("list-jobs");
         } else {
             ArrayList<String> items = JobData.findAll(column);
             model.addAttribute("title", "All " + columnChoices.get(column) + " Values");
             model.addAttribute("column", column);
             model.addAttribute("items", items);
+            System.out.println(columnChoices.get(column)+ columnChoices.get(column) + " -some of the columnsXXXXXXXXXXXXXXXXXXXX"); //test line
             return "list-column";
         }
 
@@ -61,5 +67,24 @@ public class ListController {
         model.addAttribute("jobs", jobs);
 
         return "list-jobs";
+
+
+    }
+
+    //Search function from techhobx
+    private static void printJobs(ArrayList<HashMap<String, String>> all_Jobs) {
+        if (all_Jobs.size() == 0) {
+            System.out.println("No results found. Try again. ");
+        }
+
+
+        for (HashMap<String, String> each_job : all_Jobs) {
+            System.out.println("***********");
+            for (Map.Entry<String, String> job_list : each_job.entrySet()) {
+                System.out.println(job_list.getKey() + ": " + job_list.getValue());
+            }
+            System.out.println("***********\n");
+
+        }
     }
 }
