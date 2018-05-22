@@ -39,7 +39,7 @@ public class ListController {
     public String listColumnValues(Model model, @RequestParam String column) {
 
         if (column.equals("all")) {
-            ArrayList<HashMap<String, String>> jobs = JobData.findAll();
+            ArrayList<HashMap<String, String>> jobs = JobData.findAll();  //This is the jobs call that I need to pass into html
             model.addAttribute("title", "All Jobs");
             model.addAttribute("jobs", jobs);  //this looks like what needs to be passed to list
             //System.out.println(columnChoices + "columthingsVVVVVVVVVVVVVVVVV"); //test line

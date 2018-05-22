@@ -13,14 +13,14 @@
     <!-- TODO #3 - Use the same list display from search.html -->
 
     <!-- my code. This code is doind al lthe list functionality-->
-    <table class="job-listing" th:each="jobV : ${jobs}">
-        <tr th:each="entry : ${jobV}">
-            <td th:text="${entry.key}"></td>
-            <td th:text="${entry.value}"></td>
+    <table class="job-listing" th:each="job_listingV : ${jobs}">
+        <tr th:each="listing_fieldV : ${job_listingV}">
+            <td th:text="${listing_fieldV.key}"></td>
+            <td th:text="${listing_fieldV.value}"></td>
         </tr>
 
     </table>
-    <<!-- end my code -->
+    <!-- end my code -->
 
 
 
