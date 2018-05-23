@@ -70,21 +70,19 @@ public class ListController {
 
 
     }
-
     //Search function from techhobx
+    /*
     private static void printJobs(ArrayList<HashMap<String, String>> all_Jobs) {
         if (all_Jobs.size() == 0) {
             System.out.println("No results found. Try again. ");
         }
 
-
         for (HashMap<String, String> each_job : all_Jobs) {
-            System.out.println("***********");
             for (Map.Entry<String, String> job_list : each_job.entrySet()) {
                 System.out.println(job_list.getKey() + ": " + job_list.getValue());
             }
-            System.out.println("***********\n");
 
         }
-    }
+    }   */
+
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -27,18 +28,15 @@ public class SearchController {
 
     // TODO #1 - Create handler to process search request and display results
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public String proceessSearchForm(@RequestParam String searchType, String searchTerm) {
-        HashMap<String, String> cheese_n_description = new HashMap<>(); //Hashing with descriptions
+    @RequestMapping(value = "results", method = RequestMethod.POST)
+    public String proceessSearchForm(Model model, @RequestParam String searchType, String searchTerm) {
+        //ArrayList<HashMap<String, String>> jobs = JobData.findByColumnAndValue();
 
-        //cheese_n_description.put(cheeseName, cheese_disc); //addes to the hash
-        //cheeses.add(search_type_n_term);  ///nolonger being used as lineb below
-        //cheese_Discription.add(search_type_n_term);   //added this line to get desctiptions
-        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+       // jobs = JobData.findByValue(searchTerm);
         System.out.println(searchType + "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         System.out.println(searchTerm + "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
-        return "search";
+        return "list";
 
     }
 

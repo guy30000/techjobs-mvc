@@ -12,41 +12,28 @@
 
     <form th:action="@{/search/results}" method="post">
         <h2>Search by:</h2>
-
-        <p>
-            <span th:each="column : ${columns}">
-                <input
-                        type="radio"
-                        name="searchType"
-                        th:id="${column.key}"
-                        th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
+        <p><span th:each="column : ${columns}">
+                <input type="radio" name="searchType"  th:id="${column.key}"
+                        th:value="${column.key}" th:checked="${column.key == 'all'}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label> <!-- searchType  -->
-            </span>
-        </p>
+        </span></p>
         <p>
             <label for="searchTerm">Keyword:</label> <!--searchTerm = Search field -->
             <input type="text" name="searchTerm" id="searchTerm" />
         </p>
-
         <input type="submit" value="Search" />
     </form>
 
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
-    <form method="post">
+    <table class="job-listing" th:each="job_listingV : ${jobs}">
+        <tr th:each="listing_fieldV : ${job_listingV}">
+            <td th:text="${listing_fieldV.key}"></td>
+            <td th:text="${listing_fieldV.value}"></td>
+        </tr>
 
-        <label for="searchType">WsearchType?</label>
-        <input type="text" name="searchType" id="searchType" />
-
-        <label for="searchTerm">TsearchTerme</label>
-        <input type="text" name="searchTerm" id="searchTerm" />
-
-        <input type="submit" value="Add Cheese" />
-
-
-    </form>
+    </table>
 
 </div>
 
