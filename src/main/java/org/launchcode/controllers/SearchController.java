@@ -31,12 +31,23 @@ public class SearchController {
     @RequestMapping(value = "results", method = RequestMethod.POST)
     public String proceessSearchForm(Model model, @RequestParam String searchType, String searchTerm) {
         //ArrayList<HashMap<String, String>> jobs = JobData.findByColumnAndValue();
+        // jobs = JobData.findByValue(searchTerm);
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<HashMap<String, String>>();
 
-       // jobs = JobData.findByValue(searchTerm);
+        if (searchType.equals("all")) {
+            jobs = JobData.findByValue(searchTerm);
+        } else {
+            jobs = JobData.findByColumnAndValue(searchType, searchTerm);
+        }
+
+        model.addAttribute("jobs", jobs);
+        model.addAttribute("columns", ListController.columnChoices);
         System.out.println(searchType + "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         System.out.println(searchTerm + "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
-        return "list";
+
+
+        return "search";
 
     }
 
